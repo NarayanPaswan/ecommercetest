@@ -24,12 +24,52 @@ class _CartViewState extends State<CartView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Cart Page"),
+        actions: [
+          /*
+          IconButton(onPressed: (){
+            showDialog(
+              useSafeArea: true,
+              context: context, 
+              builder: (context)=>AlertDialog(
+                scrollable: true,
+                title: const Text('Delete All'),
+                content: const Text("Do you want to delete all?"),
+                actions: [
+                  ElevatedButton(onPressed: ()async{
+                    await cartControllerProvider.deleteAllDataFromCartTable();
+                    // ignore: use_build_context_synchronously
+                    Navigator.pop(context);
+                  }, child: const Text("Yes"),),
+                  ElevatedButton(onPressed: (){
+                    Navigator.pop(context);
+                  }, child: const Text("No"),),
+                ],
+              ),
+              
+              );
+
+
+          }, icon: const Icon(Icons.delete_forever_outlined)
+          ),
+         
+          const SizedBox(width: 10,),
+
+          //delete all data from shared pref
+          InkWell(
+            onTap: (){
+                cartControllerProvider.clearPrefs();
+            },
+            child: const Icon(Icons.delete, color: Colors.red,))
+             */
+        ],
         ),
      body: FutureBuilder(
        future: cartControllerProvider.getDataFromLocalStorage(),
        builder: (context, AsyncSnapshot<List<CartModel>> snapshot){
-         if(!snapshot.hasData){
-            return Center(
+         if(snapshot.hasData){
+           
+            if(snapshot.data!.isEmpty){
+              return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,10 +78,11 @@ class _CartViewState extends State<CartView> {
                   AppText(text: Labels.exploreProducts, size: 13,)
                 ],
               ),
-            );
-            
-         }else{
-           return Column(
+              );
+
+            }else{
+
+            return Column(
              children: [
                Expanded(
                  child: ListView.builder(
@@ -215,8 +256,12 @@ class _CartViewState extends State<CartView> {
               }),
              ],
            );
+          }
+           
          }
-       }),
+         return Text("");
+       }
+       ),
        bottomNavigationBar: const bottomNavigationBarView(),   
     );
   }

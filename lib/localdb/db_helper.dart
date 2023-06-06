@@ -16,6 +16,7 @@ class DBHelper{
     }
     //otherwise create database
     _db = await initDatabase();
+    // return null;
   }
   initDatabase()async{
     //it is creating database in our mobile
@@ -63,5 +64,12 @@ class DBHelper{
       
      );
   }
+
+
+   Future deleteAllFromCartTable ()async{
+    var dbClient = await db;
+    return dbClient!.rawQuery('DELETE FROM cart');
+  
+    }
 
 }

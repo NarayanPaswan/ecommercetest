@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../Controller/cart_controller_provider.dart';
 import '../../Controller/home_controller_provider.dart';
 import '../../utils/exports.dart';
+import '../profile/user_profile_view.dart';
 
 // ignore: camel_case_types
 class bottomNavigationBarView extends StatelessWidget {
@@ -52,7 +53,9 @@ class bottomNavigationBarView extends StatelessWidget {
        BottomNavigationBarItem(
         label: 'Profile',
        icon: IconButton(
-         onPressed: () {},
+         onPressed: () {
+          PageNavigator(ctx: context).nextPage(page: const UserProfileView());
+         },
         icon: const Icon(Icons.person))
       ),
       

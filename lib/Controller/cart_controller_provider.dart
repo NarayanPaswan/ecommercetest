@@ -73,5 +73,15 @@ class CartControllerProvider extends ChangeNotifier {
     return _counter;
   }
 
+  Future deleteAllDataFromCartTable()async{
+   db.deleteAllFromCartTable();
+   notifyListeners();
+  }
+  //delete all data from shared Pref
+  void clearPrefs() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.clear();
+  }
+
 
 }
