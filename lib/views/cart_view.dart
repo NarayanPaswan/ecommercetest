@@ -259,7 +259,7 @@ class _CartViewState extends State<CartView> {
           }
            
          }
-         return Text("");
+         return const Text("");
        }
        ),
        bottomNavigationBar: const bottomNavigationBarView(),   

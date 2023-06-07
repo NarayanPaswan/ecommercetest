@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_controller.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommercetest/Controller/cart_controller_provider.dart';
 import 'package:ecommercetest/localdb/db_helper.dart';
 import 'package:ecommercetest/models/cart_model.dart';
@@ -17,11 +15,7 @@ import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../Controller/auth_controller_provider.dart';
 import '../../Controller/home_controller_provider.dart';
-import '../../models/slider_model.dart';
 import '../../utils/exports.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
